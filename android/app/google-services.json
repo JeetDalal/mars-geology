@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "29388899033",
+    "project_id": "mars-geology",
+    "storage_bucket": "mars-geology.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29388899033:android:7aa4a4e88f9ece0e4834c8",
+        "android_client_info": {
+          "package_name": "com.example.marsgeology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29388899033-2nig9go6qnj3havpavjp3o031m30jctu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7P79ItBbQ3p0L4eAOYbaekVXwwEU9Yi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29388899033-2nig9go6qnj3havpavjp3o031m30jctu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
