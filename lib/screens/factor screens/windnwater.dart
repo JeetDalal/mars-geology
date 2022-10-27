@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:beautiful_soup_dart/beautiful_soup.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -6,47 +7,39 @@ import 'package:html/dom.dart' as dom;
 import 'package:lottie/lottie.dart';
 import 'package:html/parser.dart' as parser;
 
-class ResearchPapersScreen extends StatefulWidget {
-  ResearchPapersScreen({Key? key}) : super(key: key);
+class WindNWater extends StatefulWidget {
+  WindNWater({Key? key}) : super(key: key);
 
   @override
-  State<ResearchPapersScreen> createState() => _ResearchPapersScreenState();
+  State<WindNWater> createState() => _WindNWaterState();
 }
 
-class _ResearchPapersScreenState extends State<ResearchPapersScreen> {
+class _WindNWaterState extends State<WindNWater> {
   List<String> titles = [];
   List<String> description = [];
-  List<String?> links = [];
   bool _isLoading = true;
   @override
   void initState() {
     super.initState();
     getData();
-    // run('https://mars.nasa.gov/msl/mission/science/research-papers/');
   }
 
   void getData() async {
-    final uri =
-        Uri.parse('https://mars.nasa.gov/msl/mission/science/research-papers/');
+    final uri = Uri.parse('https://mars.nasa.gov/msl/mission/science/goals/');
     final response = await http.get(uri);
     dom.Document document = dom.Document.html(response.body);
     final description = document
-        .querySelectorAll('#primary_column > div > ul > li ')
+        .querySelectorAll('#primary_column > div > p ')
         .map((e) => e.text)
-        .toList();
-    final links = document
-        .querySelectorAll('#primary_column > div > ul > li > a')
-        .map((e) => e.attributes['href'])
         .toList();
     // final
     final titles = document
-        .querySelectorAll('#primary_column > div > h3')
+        .querySelectorAll('#primary_column > div > h2 > b')
         .map((e) => e.innerHtml.trim())
         .toList();
 
     setState(() {
       this.titles = titles;
-      this.links = links;
       this.description = description;
       _isLoading = false;
     });
@@ -80,7 +73,7 @@ class _ResearchPapersScreenState extends State<ResearchPapersScreen> {
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 30),
                       child: Text(
-                        'R E S E A R C H   P A P E R S ',
+                        'G  O  A  L  S ',
                         style: TextStyle(
                           color: Colors.orange,
                           fontWeight: FontWeight.bold,
@@ -105,9 +98,7 @@ class _ResearchPapersScreenState extends State<ResearchPapersScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        index == 0
-                                            ? "Mars Science Laboratory Science Team Papers:"
-                                            : titles[index - 1],
+                                        titles[index],
                                         style: const TextStyle(
                                           color: Colors.orange,
                                           fontWeight: FontWeight.bold,
@@ -115,18 +106,10 @@ class _ResearchPapersScreenState extends State<ResearchPapersScreen> {
                                         ),
                                       ),
                                       Text(
-                                        description[index],
+                                        description[index + 1],
                                         style: const TextStyle(
                                           color: Colors.orange,
                                           fontSize: 17,
-                                        ),
-                                      ),
-                                      Text(
-                                        links[index] ?? " ",
-                                        style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 214, 97, 46),
-                                          fontSize: 16,
                                         ),
                                       ),
                                     ],

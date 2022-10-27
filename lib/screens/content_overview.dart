@@ -9,10 +9,6 @@ class ContentOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color.fromARGB(255, 214, 97, 46),
-      ),
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
@@ -69,10 +65,44 @@ class ContentOverview extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                       vertical: 5,
                     ),
-                    child: Text(
-                      content_items[index].toUpperCase(),
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 214, 97, 46),
+                    child: GestureDetector(
+                      onTap: () {
+                        switch (index) {
+                          case 0:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/page-controller');
+                            break;
+                          case 1:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/goals-screen');
+                            break;
+                          case 2:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/objectives-screen');
+                            break;
+                          case 3:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/research-screen');
+                            break;
+                          case 4:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/gallery-screen');
+                            break;
+                          case 5:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/about-us-screen');
+                            break;
+                          case 6:
+                            Navigator.of(context)
+                                .pushReplacementNamed('/mars-factors-screen');
+                            break;
+                        }
+                      },
+                      child: Text(
+                        content_items[index].toUpperCase(),
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 214, 97, 46),
+                        ),
                       ),
                     ),
                   );

@@ -154,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               errorText = '';
                             });
                             Navigator.of(context)
-                                .pushReplacementNamed('/home-page');
+                                .pushReplacementNamed('/page-controller');
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
                               setState(() {

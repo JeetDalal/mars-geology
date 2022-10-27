@@ -15,18 +15,19 @@ List<BoardScreen> boardScreens = [
   BoardScreen(
     title2: 'MARS',
     title1: 'DISCOVER',
+    description:
+        'Explore Mars with us.\nGet all the information you need about mars',
+    imageUrl: 'images/mars.jpg',
+  ),
+  BoardScreen(
+    title2: 'UPDATES',
+    title1: 'GET LATEST',
     description: 'Lauren Epsum/Lauren Epsum\nLauren Epsum',
     imageUrl: 'images/mars.jpg',
   ),
   BoardScreen(
-    title2: 'GALAXIES',
-    title1: 'TRAVEL THROUGH',
-    description: 'Lauren Epsum/Lauren Epsum\nLauren Epsum',
-    imageUrl: 'images/mars.jpg',
-  ),
-  BoardScreen(
-    title2: 'ABOVE CLOUDS',
-    title1: 'FLY UP',
+    title2: 'VERIFIED',
+    title1: 'RESEARCH PAPERS',
     description: 'Lauren Epsum/Lauren Epsum\nLauren Epsum',
     imageUrl: 'images/mars.jpg',
   ),
