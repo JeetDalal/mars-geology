@@ -93,27 +93,29 @@ class _GoalsState extends State<Goals> {
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 20,
                                   ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        titles[index],
-                                        style: const TextStyle(
-                                          color: Colors.orange,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
+                                  child: index > 1
+                                      ? null
+                                      : Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              titles[index],
+                                              style: const TextStyle(
+                                                color: Colors.orange,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            Text(
+                                              description[index + 1],
+                                              style: const TextStyle(
+                                                color: Colors.orange,
+                                                fontSize: 17,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                      Text(
-                                        description[index + 1],
-                                        style: const TextStyle(
-                                          color: Colors.orange,
-                                          fontSize: 17,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                 ),
                               ),
                             ),

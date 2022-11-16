@@ -224,21 +224,21 @@ class _HomePageState extends State<HomePage>
                 ],
               ),
             ),
-            Row(
-              children: [
-                Container(
-                  color: Colors.orange,
-                  height: 30,
-                  width: MediaQuery.of(context).size.width,
-                  child: const Center(
-                    child: Text(
-                      'Swipe Up',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Container(
+            //       color: Colors.orange,
+            //       height: 30,
+            //       width: MediaQuery.of(context).size.width,
+            //       child: const Center(
+            //         child: Text(
+            //           'Swipe Up',
+            //           style: TextStyle(color: Colors.black),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

@@ -15,7 +15,7 @@ class WindNWater extends StatefulWidget {
 }
 
 class _WindNWaterState extends State<WindNWater> {
-  List<String> titles = [];
+  // List<String> titles = [];
   List<String> description = [];
   bool _isLoading = true;
   @override
@@ -25,21 +25,22 @@ class _WindNWaterState extends State<WindNWater> {
   }
 
   void getData() async {
-    final uri = Uri.parse('https://mars.nasa.gov/msl/mission/science/goals/');
+    final uri = Uri.parse(
+        'https://www.esa.int/Science_Exploration/Space_Science/Mars_Express/Shaping_the_surface_of_Mars_with_water_wind_and_ice');
     final response = await http.get(uri);
     dom.Document document = dom.Document.html(response.body);
     final description = document
-        .querySelectorAll('#primary_column > div > p ')
+        .querySelectorAll('body > div > article > div > p ')
         .map((e) => e.text)
         .toList();
     // final
-    final titles = document
-        .querySelectorAll('#primary_column > div > h2 > b')
-        .map((e) => e.innerHtml.trim())
-        .toList();
+    // final titles = document
+    //     .querySelectorAll('#primary_column > div > h2 > b')
+    //     .map((e) => e.innerHtml.trim())
+    //     .toList();
 
     setState(() {
-      this.titles = titles;
+      // this.titles = titles;
       this.description = description;
       _isLoading = false;
     });
@@ -71,19 +72,22 @@ class _WindNWaterState extends State<WindNWater> {
                 child: Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 30),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                       child: Text(
-                        'G  O  A  L  S ',
+                        textAlign: TextAlign.center,
+                        'R O L E   O F   W I N D   A N D  W A T E R   I N   S H A P I N G   M A R T I A N\n   S U R F A C E ',
                         style: TextStyle(
                           color: Colors.orange,
                           fontWeight: FontWeight.bold,
+                          fontSize: 20,
                         ),
                       ),
                     ),
                     SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: List.generate(titles.length, (index) {
+                        children: List.generate(description.length, (index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 30),
@@ -98,15 +102,7 @@ class _WindNWaterState extends State<WindNWater> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        titles[index],
-                                        style: const TextStyle(
-                                          color: Colors.orange,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      Text(
-                                        description[index + 1],
+                                        description[index],
                                         style: const TextStyle(
                                           color: Colors.orange,
                                           fontSize: 17,

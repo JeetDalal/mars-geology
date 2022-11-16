@@ -15,7 +15,7 @@ class TechTonics extends StatefulWidget {
 }
 
 class _TechTonicsState extends State<TechTonics> {
-  List<String> titles = [];
+  // List<String> titles =? [];
   List<String> description = [];
   bool _isLoading = true;
   @override
@@ -25,21 +25,21 @@ class _TechTonicsState extends State<TechTonics> {
   }
 
   void getData() async {
-    final uri = Uri.parse('https://mars.nasa.gov/msl/mission/science/goals/');
+    final uri = Uri.parse('https://en.wikipedia.org/wiki/Tectonics_of_Mars');
     final response = await http.get(uri);
     dom.Document document = dom.Document.html(response.body);
     final description = document
-        .querySelectorAll('#primary_column > div > p ')
+        .querySelectorAll('#mw-content-text > div > p')
         .map((e) => e.text)
         .toList();
     // final
-    final titles = document
-        .querySelectorAll('#primary_column > div > h2 > b')
-        .map((e) => e.innerHtml.trim())
-        .toList();
+    // final titles = document
+    //     .querySelectorAll('#primary_column > div > h2 > b')
+    //     .map((e) => e.innerHtml.trim())
+    //     .toList();
 
     setState(() {
-      this.titles = titles;
+      // this.titles = titles;
       this.description = description;
       _isLoading = false;
     });
@@ -73,7 +73,7 @@ class _TechTonicsState extends State<TechTonics> {
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 30),
                       child: Text(
-                        'G  O  A  L  S ',
+                        'T E C T O N I C S',
                         style: TextStyle(
                           color: Colors.orange,
                           fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class _TechTonicsState extends State<TechTonics> {
                     SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: List.generate(titles.length, (index) {
+                        children: List.generate(description.length, (index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 30),
@@ -98,15 +98,7 @@ class _TechTonicsState extends State<TechTonics> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        titles[index],
-                                        style: const TextStyle(
-                                          color: Colors.orange,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      Text(
-                                        description[index + 1],
+                                        description[index],
                                         style: const TextStyle(
                                           color: Colors.orange,
                                           fontSize: 17,

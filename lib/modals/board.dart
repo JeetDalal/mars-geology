@@ -22,13 +22,13 @@ List<BoardScreen> boardScreens = [
   BoardScreen(
     title2: 'UPDATES',
     title1: 'GET LATEST',
-    description: 'Lauren Epsum/Lauren Epsum\nLauren Epsum',
+    description: 'Get latest updates about Mars Programs',
     imageUrl: 'images/mars.jpg',
   ),
   BoardScreen(
     title2: 'VERIFIED',
     title1: 'RESEARCH PAPERS',
-    description: 'Lauren Epsum/Lauren Epsum\nLauren Epsum',
+    description: 'Explore various research papers on Mars',
     imageUrl: 'images/mars.jpg',
   ),
 ];

@@ -44,7 +44,7 @@ class _BoardingScreen1State extends State<BoardingScreen1> {
               child: Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.35,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(

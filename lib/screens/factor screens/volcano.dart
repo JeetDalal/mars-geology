@@ -15,8 +15,8 @@ class Volcanism extends StatefulWidget {
 }
 
 class _VolcanismState extends State<Volcanism> {
-  String title = " ";
-  // List<String> description = [];
+  // List<String> titles =? [];
+  List<String> description = [];
   bool _isLoading = true;
   @override
   void initState() {
@@ -25,22 +25,22 @@ class _VolcanismState extends State<Volcanism> {
   }
 
   void getData() async {
-    final uri = Uri.parse(
-        'https://ui.adsabs.harvard.edu/abs/2015AGUFM.P31F..03B/abstract');
+    final uri = Uri.parse('https://en.wikipedia.org/wiki/Volcanism_on_Mars');
     final response = await http.get(uri);
     dom.Document document = dom.Document.html(response.body);
-    // final description = document
-    //     .querySelectorAll('#primary_column > div > p ')
-    //     .map((e) => e.text)
-    //     .toList();
+    final description = document
+        .querySelectorAll('#mw-content-text > div.mw-parser-output > p')
+        .map((e) => e.text)
+        .toList();
     // final
-    final title = document
-        .querySelector('#current-subview > div > article > h2.s-abstract-title')
-        .toString();
+    // final titles = document
+    //     .querySelectorAll('#primary_column > div > h2 > b')
+    //     .map((e) => e.innerHtml.trim())
+    //     .toList();
 
     setState(() {
-      this.title = title;
-      // this.description = description;
+      // this.titles = titles;
+      this.description = description;
       _isLoading = false;
     });
   }
@@ -69,45 +69,48 @@ class _VolcanismState extends State<Volcanism> {
           : SafeArea(
               child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            'V O L C A N I S M ',
-                            style: TextStyle(
-                              color: Colors.orange,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      padding: EdgeInsets.symmetric(vertical: 30),
                       child: Text(
-                        'The Volcanic History of Mars and Influences on Carbon Outgassing',
+                        'V O L C A N I S M',
                         style: TextStyle(
                           color: Colors.orange,
                           fontWeight: FontWeight.bold,
-                          fontSize: 22,
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Text(
-                        'Exploration of Mars has revealed some of the most impressive volcanic landforms found throughout the solar system. Volatiles outgassed from volcanoes were likely to have strongly influenced atmospheric chemistry and affected the martian climate. On Earth the role of carbon involved in volcanic outgassing is strongly influenced by tectonic setting, with the greatest weight percent contributions coming from partial mantle melts associated with hot spot volcanism. Most martian volcanic centers appear to represent this style of volcanism. Thus, one important factor in understanding the martian carbon cycle through time is understanding this volatile\'s link to the planet\'s volcanic history. The identified volcanic constructs on Mars are not unlike those of the Earth suggesting similar magmatic and eruptive processes. However, the dimensions of many martian volcanic features are significantly larger. The distribution of volcanoes and volcanic deposits on Mars are not spatially or temporally uniform. Large volcanoes (> 100 km diameter) are spatially concentrated in volcanic provinces that likely represent focused upwellings or zones of crustal weakness that enabled magma ascension. Smaller (10s km diameters) volcanoes such as cones, low shields and fissures are often grouped into fields and their lava flows coalesce to produce low slope plains. In some cases plains lava fields are quite extensive with little to no evidence for the volcanic constructs. Although martian volcanism appears to have been dominated by effusive eruptions with likely contributions from passive degassing from the interior, explosive volcanic centers and deposits are known to exist. After the development of a martian crust the planet\'s volcanic style appears to have evolved from early explosive activity to effusive activity centered at major volcanoes to effusive distributed activity in fields. However, questions remain as to whether or not these styles significantly overlapped in time and if so, why? As scientists continue to learn more about carbon\'s role in terrestrial volcanism, it is reasonable to question how and how much carbon was involved in different styles of martian volcanic activity and how carbon and other volatiles have affected the martian atmosphere and climate through time.',
-                        style: TextStyle(
-                          color: Colors.orange,
-                          fontSize: 18,
-                        ),
+                    SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: List.generate(description.length, (index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 30),
+                            child: Expanded(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        description[index],
+                                        style: const TextStyle(
+                                          color: Colors.orange,
+                                          fontSize: 17,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
                       ),
                     ),
                   ],
